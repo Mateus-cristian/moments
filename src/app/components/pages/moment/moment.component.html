@@ -26,6 +26,42 @@
     </button>
   </div>
   <div class="moment__comments">
-    <p>Comentários</p>
+    <p>Comentários: {{ moment.comments?.length ?? 0 }}</p>
+    <div *ngIf="moment.comments!.length > 0; else noComments" class="">
+      <div
+        class="moment__comments__container"
+        *ngFor="let comment of moment.comments"
+      >
+        <div class="moment__comments__container__comment">
+          <p class="moment__comments__container__comment__text">
+            {{ comment.text }}
+          </p>
+          <p class="moment__comments__container__comment__author">
+            por <span>{{ comment.username }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noComments> Não há comentarios </ng-template>
   </div>
+
+  <h3>Deixe um comentário</h3>
+
+  <form>
+    <div class="form-group">
+      <label for="text">Comentário:</label>
+      <textarea
+        placeholder="O que você quer comentar?"
+        required
+        noresize
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="text">Nome:</label>
+      <input type="text" placeholder="Digite seu nome" required />
+    </div>
+
+    <input type="submit" value="Comentar!" />
+  </form>
 </div>
