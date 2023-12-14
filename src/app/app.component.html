@@ -1,6 +1,11 @@
 <app-messages></app-messages>
-<app-header></app-header>
-<main class="container">
+<app-header *ngIf="!isLoginRoute"></app-header>
+<main class="container" *ngIf="!isLoginRoute; else routeLogin">
   <router-outlet></router-outlet>
 </main>
-<app-footer></app-footer>
+<app-footer *ngIf="!isLoginRoute"></app-footer>
+
+<ng-template #routeLogin>
+  <router-outlet></router-outlet>
+</ng-template>
+
