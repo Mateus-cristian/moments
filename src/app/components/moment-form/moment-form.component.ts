@@ -27,7 +27,7 @@ export class MomentFormComponent implements OnInit {
       description: new FormControl(this.momentData?.description ?? '', [
         Validators.required,
       ]),
-      image: new FormControl(''),
+      image: new FormControl(this.momentData?.image ?? ''),
     });
   }
 

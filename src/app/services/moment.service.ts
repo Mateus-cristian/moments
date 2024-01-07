@@ -10,7 +10,7 @@ import { IResponse } from '../interfaces/Response';
 })
 export class MomentService {
   private baseApiUrl = environment.baseApiUrl;
-  private apiUrl = `${this.baseApiUrl}api/moments`;
+  private apiUrl = `${this.baseApiUrl}/post`;
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,11 @@ export class MomentService {
   }
 
   createMoment(formData: FormData): Observable<FormData> {
-    return this.http.post<FormData>(this.apiUrl, formData);
+    return this.http.post<FormData>(this.apiUrl, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   }
 
   getMoment(id: number): Observable<IResponse<IMoment>> {

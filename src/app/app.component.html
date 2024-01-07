@@ -1,4 +1,6 @@
 <app-messages></app-messages>
+<app-toast></app-toast>
+
 <app-header *ngIf="!isLoginRoute"></app-header>
 <main class="container" *ngIf="!isLoginRoute; else routeLogin">
   <router-outlet></router-outlet>
@@ -8,4 +10,3 @@
 <ng-template #routeLogin>
   <router-outlet></router-outlet>
 </ng-template>
-

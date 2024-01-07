@@ -6,31 +6,42 @@ import { NewMomentComponent } from './components/pages/new-moment/new-moment.com
 import { MomentComponent } from './components/pages/moment/moment.component';
 import { EditMomentComponent } from './components/pages/edit-moment/edit-moment.component';
 import { LoginComponent } from './components/pages/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'about',
     component: AboutComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'moments/new',
     component: NewMomentComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'moments/edit/:id',
     component: EditMomentComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'moments/:id',
     component: MomentComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: '',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '**',
+    component: LoginComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
