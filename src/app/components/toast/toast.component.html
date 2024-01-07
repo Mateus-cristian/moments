@@ -1,0 +1,9 @@
+<div
+  *ngIf="(toastService.toastInfo$ | async)?.message"
+  class="toast"
+  [style.background-color]="colorToast"
+>
+  <fa-icon *ngIf="showError" [icon]="faTimes"></fa-icon>
+  <fa-icon *ngIf="showSucess" [icon]="faCheck"></fa-icon>
+  <span>{{ (toastService.toastInfo$ | async)?.message }}</span>
+</div>
